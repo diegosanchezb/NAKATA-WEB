@@ -4,10 +4,11 @@ import { socialLinks } from "../../constants/links";
 
 export const Footer = () => {
   return (
-    <footer className="py-16 bg-gray-950 px-12 flex justify-between gap-10 text-slate-200 text-sm flex-wrap mt-10 md:flex-nowrap">
+    <footer className="py-10  px-15 flex justify-between gap-15 text-pink-300 text-sm flex-wrap mt-5 md:flex-nowrap rounded-lg border border-pink-300">
       <Link
-        to="/"
-        className={`text-2xl font-bold tracking-tighter transition-all text-white flex-1`}
+        to="https://www.instagram.com/diesanchezb/"
+        target="_blank"
+        className={`text-3xl font-bold tracking-tighter text-pink-300 hover:text-green-400 flex-1 mt-10`}
       >
         NakataClothes
       </Link>
@@ -18,15 +19,15 @@ export const Footer = () => {
         </p>
         <p className="text-xs font-medium">Recibe promociones exclusivas</p>
 
-        <div className="border border-gray-800 flex items-center gap-2 px-3 py-2 rounded-full">
+        <div className="border border-pink-300 flex items-center gap-2 px-3 py-2 rounded-full">
           <input
             type="email"
             placeholder="Correo Electrónico"
-            className="pl-2 bg-gray-950 text-slate-200 w-full focus:outline-none"
+            className="pl-2 text-white w-full focus:outline-none"
           />
 
-          <button className="text-slate-200">
-            <BiChevronRight size={20} />
+          <button className="text-pink-300 cursor-pointer">
+            <BiChevronRight size={22} />
           </button>
         </div>
       </div>
@@ -35,11 +36,13 @@ export const Footer = () => {
         <p className="font-bold uppercase tracking-tighter">Políticas</p>
 
         <nav className="flex flex-col gap-2 text-xs font-medium">
-          <Link to="/celulares">Productos</Link>
-          <Link to="#" className="text-slate-300 hover:text-white">
+          <Link to="/celulares" className="hover:text-green-400">
+            Productos
+          </Link>
+          <Link to="#" className="hover:text-green-400">
             Políticas de privacidad
           </Link>
-          <Link to="#" className="text-slate-300 hover:text-white">
+          <Link to="#" className="hover:text-green-400">
             Términos de uso
           </Link>
         </nav>
@@ -51,7 +54,7 @@ export const Footer = () => {
         </p>
 
         <p className="text-xs leading-6">
-          No te pierdas las novedades que Nakata tiene para vos.
+          Y enterate de todas nuestras novedades
         </p>
 
         <div className="flex">
@@ -61,7 +64,7 @@ export const Footer = () => {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="text-slate-300 border border-gray-8000 w-full h-full py-3.5 flex items-center justify-center transition-all hover:bg-white hover:text-gray-950"
+              className="text-black bg-pink-300 border border-black w-full h-full py-3.5 flex items-center justify-center transition-all hover:bg-green-400"
             >
               {link.icon}
             </a>

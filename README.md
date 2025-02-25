@@ -1,6 +1,6 @@
 # React + Typescript + Vite
 
-Ecommerce de emprendimiento de ropa vintage
+Ecommerce para venta de ropa
 
 # Tecnologías utilizadas
 

@@ -1,15 +1,15 @@
 export const AboutPage = () => {
   return (
-    <div className="space-y-5 ">
+    <div className="space-y-5 text-pink-300 mt-8">
       <h1 className="text-center text-4xl font-semibold tracking-tight mb-5">
         Nuestro emprendimiento
       </h1>
       <img
         src="../../img/sobrenosotros.jpg"
         alt="Imágen de fondo"
-        className="h-[500px] w-full object-cover"
+        className="h-[500px] w-full object-cover rounded-lg border border-pink-300"
       />
-      <div className="flex flex-col gap-4 tracking-tighter leading-7 text-sm font-medium text-slate-800">
+      <div className="flex flex-col gap-4 tracking-tighter leading-7 text-sm font-medium text-pink-300">
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum dolore
           repellendus, maxime soluta rerum doloremque. Sequi minima nostrum
@@ -22,10 +22,10 @@ export const AboutPage = () => {
           voluptate quis dolores iure minima ullam dolore sint, explicabo
           quisquam esse animi cum repellat eligendi?
         </p>
-        <h2 className="text-3xl font-semibold tracking-tight mt-8 mb-4">
+        <h2 className="text-3xl font-semibold tracking-tight mt-8 mb-4 text-center">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam, eos.
         </h2>
-        <p>
+        <p className="text-center mb-8">
           Para más información, no dudes en ponerte en contacto con nosotros a
           través de nuestro{" "}
           <a href="mailto:ejemplo@gmail.com">correo electrónico</a>, o mediante

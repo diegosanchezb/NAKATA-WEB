@@ -1,7 +1,7 @@
 interface Props {
-    className?: string;
+  className?: string;
 }
 
-export const Separator = ({className}) => {
-  return <div className={`bg-slate-200 h-px my-5 ${className}`} />
-}
+export const Separator = ({ className }) => {
+  return <div className={`bg-pink-300 h-px my-5 ${className}`} />;
+};

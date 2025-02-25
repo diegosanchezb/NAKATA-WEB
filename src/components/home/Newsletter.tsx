@@ -12,8 +12,8 @@ export const Newsletter = () => {
       />
 
       {/* CONTENIDO */}
-      <div className="container z-10 relative p-5 ml-5 md:p-0">
-        <div className="w-full text-black bg-white p-12 space-y-5 md:w-[50%] lg:w-[40%]">
+      <div className="container z-10 relative p-5 ml-10 md:p-0">
+        <div className="w-full text-pink-300  p-11 space-y-4 md:w-[50%] lg:w-[40%] rounded-lg border border-pink-300">
           <p className="text-xs uppercase font-semibold">
             Suscribite a nuestro boletín y recibí data sobre promociones y drops
           </p>
@@ -23,10 +23,10 @@ export const Newsletter = () => {
           <form className="flex flex-col xl:flex-row gap-5">
             <input
               type="email"
-              className="border border-slate-200 focus:outline-none rounded-full py-3 px-5 w-full text-xs font-medium"
+              className="border border-pink-300 focus:outline-none rounded-full py-3 px-5 w-full text-xs font-medium"
               placeholder="Correo electrónico"
             />
-            <button className="bg-black text-white font-semibold rounded-full uppercase tracking-wider py-3 text-xs xl:px-5">
+            <button className="bg-pink-300 text-black border border-pink-300 hover:bg-green-400 font-semibold rounded-full uppercase tracking-wider py-3 text-xs xl:px-5 cursor-pointer">
               Suscribirme
             </button>
           </form>

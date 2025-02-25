@@ -6,17 +6,17 @@ import { Logo } from "./Logo";
 
 export const Navbar = () => {
   return (
-    <header className="bg-white text-black py-4 flex items-center justify-between px-5 border-b border-slate-200 lg:px-12">
+    <header className=" text-pink-300 py-5 flex items-center border-b border-pink-300 justify-between lg:px-12">
       <Logo />
-      <nav className="space-x-5 hidden md:flex">
+      <nav className="space-x-20 hidden md:flex">
         {navbarLinks.map((link) => (
           <NavLink
             key={link.id}
             to={link.href}
             className={({ isActive }) =>
               `${
-                isActive ? "text-cyan-500 underline" : ""
-              } trasition-all duration-300 font-medium hover:text-cyan-600 hover:underline `
+                isActive ? "" : ""
+              } trasition-all duration-300 font-medium hover:text-green-400`
             }
           >
             {link.title}
@@ -31,13 +31,13 @@ export const Navbar = () => {
         <div className="relative">
           <Link
             to="/account"
-            className="border-2 border-slate-700 w-9 h-9 rounded-full grid place-items-center text-lg font-bold"
+            className="border-2 border-pink-300 w-9 h-9 rounded-full grid place-items-center text-lg font-bold"
           >
             R
           </Link>
         </div>
         <button className="relative">
-          <span className="absolute -bottom-2 -right-2 w-5 grid place-items-center bg-black text-white text-xs rounded-full">
+          <span className="absolute -bottom-2 -right-2 w-5 grid place-items-center bg-pink-300 text-white text-xs rounded-full">
             0
           </span>
           <HiOutlineShoppingBag size={25} />
