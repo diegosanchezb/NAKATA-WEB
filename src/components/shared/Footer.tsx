@@ -36,7 +36,7 @@ export const Footer = () => {
         <p className="font-bold uppercase tracking-tighter">Políticas</p>
 
         <nav className="flex flex-col gap-2 text-xs font-medium">
-          <Link to="/celulares" className="hover:text-green-400">
+          <Link to="/productos" className="hover:text-green-400">
             Productos
           </Link>
           <Link to="#" className="hover:text-green-400">
