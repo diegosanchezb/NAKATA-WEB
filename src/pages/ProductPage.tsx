@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Separator } from "../components/shared/Separator";
 import { formatPrice } from "../helpers";
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -10,6 +10,9 @@ import { useEffect, useMemo, useState } from "react";
 import { VariantProduct } from "../interfaces";
 import { Tag } from "../components/shared/Tag";
 import { Loader } from "../components/shared/Loader";
+import { useCartStore } from "../store/cart.store";
+import { useCounterStore } from "../store/counter.store";
+import toast from "react-hot-toast";
 
 interface Acc {
   [key: string]: {
@@ -20,13 +23,18 @@ interface Acc {
 
 export const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { product, isLoading, isError } = useProduct(slug || "");
+  const [currentSlug, setCurrentSlug] = useState(slug);
+  const { product, isLoading, isError } = useProduct(currentSlug || "");
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
   const [selectedVariant, setSelectedVariant] = useState<VariantProduct | null>(
     null
   );
+
+  const count = useCounterStore((state) => state.count);
+  const addItem = useCartStore((state) => state.addItem);
+  const navigate = useNavigate();
 
   //AGRUPAMOS VARIANTES POR COLOR
   const colors = useMemo(() => {
@@ -76,7 +84,50 @@ export const ProductPage = () => {
   //OBTENER STOCK
   const isOutOfStock = selectedVariant?.stock === 0;
 
-  if(isLoading) return <Loader />
+  //AÑADIR A CARRITO
+  const addToCart = () => {
+    if (selectedVariant) {
+      addItem({
+        variantId: selectedVariant.id,
+        productId: product?.id || "",
+        name: product?.name || "",
+        image: product?.images[0] || "",
+        color: selectedVariant.color_name,
+        storage: selectedVariant.storage,
+        price: selectedVariant.price,
+        quantity: count,
+      });
+      toast.success("Producto añadido al carrito", {
+        position: "bottom-right",
+      });
+    }
+  };
+
+  //COMPRAR AHORA
+  const buyNow = () => {
+    if (selectedVariant) {
+      addItem({
+        variantId: selectedVariant.id,
+        productId: product?.id || "",
+        name: product?.name || "",
+        image: product?.images[0] || "",
+        color: selectedVariant.color_name,
+        storage: selectedVariant.storage,
+        price: selectedVariant.price,
+        quantity: count,
+      });
+      navigate("/checkout");
+    }
+  };
+
+  useEffect(() => {
+    setCurrentSlug(slug);
+    setSelectedColor(null);
+    setSelectedStorage(null);
+    setSelectedVariant(null);
+  }, [slug]);
+
+  if (isLoading) return <Loader />;
 
   if (!product || isError)
     return (
@@ -166,12 +217,14 @@ export const ProductPage = () => {
                 <button
                   disabled
                   className="bg-pink-300 text-black uppercase cursor-pointer font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400"
+                  onClick={addToCart}
                 >
                   Agregar al carrito
                 </button>
                 <button
                   disabled
                   className="bg-pink-300 text-black cursor-pointer uppercase font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400 w-full"
+                  onClick={buyNow}
                 >
                   Comprar ahora
                 </button>

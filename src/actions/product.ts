@@ -21,7 +21,7 @@ export const getFilteredProducts = async ({
   page: number;
   brands: string[];
 }) => {
-  const itemsPerPage = 12;
+  const itemsPerPage = 10;
   const from = (page - 1) * itemsPerPage;
   const to = from + itemsPerPage - 1;
 
@@ -36,6 +36,7 @@ export const getFilteredProducts = async ({
   }
 
   const { data, error, count } = await query;
+
   if (error) {
     console.log(error.message);
     throw new Error(error.message);
@@ -50,10 +51,12 @@ export const getRecentProducts = async () => {
     .select("*, variants(*)")
     .order("created_at", { ascending: false })
     .limit(4);
+
   if (error) {
     console.log(error.message);
     throw new Error(error.message);
   }
+
   return products;
 };
 
@@ -61,8 +64,8 @@ export const getRandomProducts = async () => {
   const { data: products, error } = await supabase
     .from("products")
     .select("*, variants(*)")
-    .order("created_at", { ascending: false })
     .limit(20);
+
   if (error) {
     console.log(error.message);
     throw new Error(error.message);
@@ -79,6 +82,20 @@ export const getProductBySlug = async (slug: string) => {
     .select("*, variants(*)")
     .eq("slug", slug)
     .single();
+
+  if (error) {
+    console.log(error.message);
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
+export const searchProducts = async (searchTerm: string) => {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*, variants(*)")
+    .ilike("name", `%${searchTerm}%`);
 
   if (error) {
     console.log(error.message);

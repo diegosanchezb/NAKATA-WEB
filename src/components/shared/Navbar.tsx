@@ -3,8 +3,16 @@ import { navbarLinks } from "../../constants/links";
 import { HiOutlineSearch, HiOutlineShoppingBag } from "react-icons/hi";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { Logo } from "./Logo";
+import { useGlobalStore } from "../../store/global.store";
+import { useCartStore } from "../../store/cart.store";
 
 export const Navbar = () => {
+  const openSheet = useGlobalStore((state) => state.openSheet);
+  const totalItemsInCart = useCartStore((state) => state.totalItemsInCart);
+  const setActiveNavMobile = useGlobalStore(
+    (state) => state.setActiveNavMobile
+  );
+
   return (
     <header className=" text-pink-300 py-5 flex items-center border-b border-pink-300 justify-between lg:px-12">
       <Logo />
@@ -25,25 +33,31 @@ export const Navbar = () => {
       </nav>
 
       <div className="flex gap-5 items-center">
-        <button>
-          <HiOutlineSearch size={25} />
+        <button
+          className="cursor-pointer hover:text-green-400"
+          onClick={() => openSheet("search")}
+        >
+          <HiOutlineSearch size={30} />
         </button>
         <div className="relative">
           <Link
             to="/account"
-            className="border-2 border-pink-300 w-9 h-9 rounded-full grid place-items-center text-lg font-bold"
+            className="border-2 border-pink-300 w-10 h-9 rounded-full grid place-items-center text-lg font-bold hover:text-green-400 hover:border-green-400"
           >
-            R
+            NC
           </Link>
         </div>
-        <button className="relative">
+        <button
+          className="relative cursor-pointer hover:text-green-400"
+          onClick={() => openSheet("cart")}
+        >
           <span className="absolute -bottom-2 -right-2 w-5 grid place-items-center bg-pink-300 text-white text-xs rounded-full">
-            0
+            {totalItemsInCart}
           </span>
-          <HiOutlineShoppingBag size={25} />
+          <HiOutlineShoppingBag size={33} />
         </button>
       </div>
-      <button className="md:hidden">
+      <button className="md:hidden" onClick={() => setActiveNavMobile(true)}>
         <FaBarsStaggered size={25} />
       </button>
     </header>
