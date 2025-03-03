@@ -1,10 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import { navbarLinks } from "../../constants/links";
-import { HiOutlineSearch, HiOutlineShoppingBag } from "react-icons/hi";
+import {
+  HiOutlineSearch,
+  HiOutlineShoppingBag,
+  HiOutlineUser,
+} from "react-icons/hi";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { Logo } from "./Logo";
 import { useGlobalStore } from "../../store/global.store";
 import { useCartStore } from "../../store/cart.store";
+import { useUser } from "../../hooks";
+import { LuLoader } from "react-icons/lu";
 
 export const Navbar = () => {
   const openSheet = useGlobalStore((state) => state.openSheet);
@@ -12,6 +18,8 @@ export const Navbar = () => {
   const setActiveNavMobile = useGlobalStore(
     (state) => state.setActiveNavMobile
   );
+  const { session, isLoading } = useUser();
+  const userId = session?.user.id;
 
   return (
     <header className=" text-pink-300 py-5 flex items-center border-b border-pink-300 justify-between lg:px-12">
@@ -39,14 +47,24 @@ export const Navbar = () => {
         >
           <HiOutlineSearch size={30} />
         </button>
-        <div className="relative">
-          <Link
-            to="/account"
-            className="border-2 border-pink-300 w-10 h-9 rounded-full grid place-items-center text-lg font-bold hover:text-green-400 hover:border-green-400"
-          >
-            NC
+
+        {isLoading ? (
+          <LuLoader className="animate-spin" size={60} />
+        ) : session ? (
+          <div className="relative">
+            <Link
+              to="/account"
+              className="border-2 border-pink-300 w-10 h-9 rounded-full grid place-items-center text-lg font-bold hover:text-green-400 hover:border-green-400"
+            >
+              NC
+            </Link>
+          </div>
+        ) : (
+          <Link to="/login">
+            <HiOutlineUser size={30} className="hover:text-green-400" />
           </Link>
-        </div>
+        )}
+
         <button
           className="relative cursor-pointer hover:text-green-400"
           onClick={() => openSheet("cart")}

@@ -15,9 +15,9 @@ export const Footer = () => {
 
       <div className="flex flex-col gap-4 flex-1">
         <p className="font-bold uppercase tracking-tighter">
-          Suscribite gil de mierda
+          Lorem ipsum dolor sit amet.
         </p>
-        <p className="text-xs font-medium">Recibe promociones exclusivas</p>
+        <p className="text-xs font-medium">Recibí promociones exclusivas</p>
 
         <div className="border border-pink-300 flex items-center gap-2 px-3 py-2 rounded-full">
           <input
