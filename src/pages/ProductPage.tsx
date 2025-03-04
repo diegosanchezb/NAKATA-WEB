@@ -207,22 +207,17 @@ export const ProductPage = () => {
 
           {/* COMPRAR */}
           {isOutOfStock ? (
-            <button
-              disabled
-              className="bg-pink-300 text-black uppercase font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400 w-full"
-            ></button>
+            <button className="bg-pink-300 text-black uppercase font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400 w-full"></button>
           ) : (
             <>
               <div className="flex flex-col gap-3">
                 <button
-                  disabled
                   className="bg-pink-300 text-black uppercase cursor-pointer font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400"
                   onClick={addToCart}
                 >
                   Agregar al carrito
                 </button>
                 <button
-                  disabled
                   className="bg-pink-300 text-black cursor-pointer uppercase font-semibold tracking-widest text-xs py-4 rounded-full transition-all duration-300 hover:bg-green-400 w-full"
                   onClick={buyNow}
                 >

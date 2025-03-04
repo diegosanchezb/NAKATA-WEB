@@ -5,11 +5,14 @@ import {
   HomePage,
   LoginPage,
   OrdersUserPage,
+  OrderUserPage,
   ProductPage,
   ProductsPage,
   RegisterPage,
+  ThankyouPage,
 } from "../pages";
 import { ClientLayout } from "../layouts/ClientLayout";
+import { CheckoutPage } from "../pages/CheckoutPage";
 
 export const router = createBrowserRouter([
   {
@@ -55,5 +58,17 @@ export const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />,
+  },
+  {
+    path: "/checkout/:id/thank-you",
+    element: <ThankyouPage />,
+  },
+  {
+    path: "pedidos/:id",
+    element: <OrderUserPage />,
   },
 ]);

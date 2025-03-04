@@ -7,3 +7,7 @@ export * from "./products/useHomeProducts";
 export * from "./auth/useLogin";
 export * from "./auth/useRegister";
 export * from "./auth/useUser";
+
+//ORDERS
+export * from "./orders/useCreatedOrder";
+export * from "./orders/useOrder";
