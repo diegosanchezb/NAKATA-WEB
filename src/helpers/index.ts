@@ -54,6 +54,18 @@ export const formatDateLong = (date: string): string => {
   });
 };
 
+//FUNCIÓN PARA FORMATEAR LA FECHA
+export const formatDate = (date: string): string => {
+  const dateObject = new Date(date);
+
+  return dateObject.toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "2-digit",
+    day: "numeric",
+  });
+};
+
+
 //FUNCIÓN PARA OBTENER ESTADO DEL PEDIDO EN ESPAÑOL
 export const getStatus = (status: string): string => {
   switch (status) {

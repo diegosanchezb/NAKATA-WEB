@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 
-export const Logo = () => {
+interface Props {
+  isDashboard?: boolean;
+}
+
+export const Logo = ({ isDashboard }: Props) => {
   return (
-    <Link to="/" className="text-2xl font-bold tracking-tighter transition-all">
-      <p className="hidden lg:block">
+    <Link
+      to="/"
+      className={`text-2xl font-bold tracking-tighter transition-all ${
+        isDashboard && "hover:scale-105"
+      }`}
+    >
+      <p className="hidden lg:block text-pink-300">
         Nakata
-        <span className="text-pink-300 hover:text-green-400">Clothes</span>
+        <span className="text-white hover:text-green-400">Clothes</span>
       </p>
 
       <p className="flex text-4xl lg:hidden">

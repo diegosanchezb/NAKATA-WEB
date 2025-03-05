@@ -1,4 +1,6 @@
 import {
+  FaBoxOpen,
+  FaCartShopping,
   FaEnvelope,
   FaFacebookF,
   FaInstagram,
@@ -47,5 +49,20 @@ export const socialLinks = [
     title: "Twitter",
     href: "https://www.twitter.com",
     icon: <FaXTwitter />,
+  },
+];
+
+export const dashboardLinks = [
+  {
+    id: 1,
+    title: "Productos",
+    href: "/dashboard/productos",
+    icon: <FaBoxOpen size={25} />,
+  },
+  {
+    id: 2,
+    title: "Ordenes",
+    href: "/dashboard/ordenes",
+    icon: <FaCartShopping size={25} />,
   },
 ];
