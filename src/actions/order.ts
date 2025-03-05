@@ -140,7 +140,7 @@ export const getOrderByCustomerId = async () => {
 
   const { data: orders, error: ordersError } = await supabase
     .from("orders")
-    .select("id, total_amout, status, created_at")
+    .select("id, total_amount, status, created_at")
     .eq("customer_id", customerId)
     .order("created_at", {
       ascending: false,
@@ -192,7 +192,8 @@ export const getOrderById = async (orderdId: number) => {
     },
     totalAmount: order.total_amount,
     status: order.status,
-    addres: {
+    created_at: order.created_at,
+    address: {
       addressLine1: order.addresses?.address_line1,
       addressLine2: order.addresses?.address_line2,
       city: order.addresses?.city,

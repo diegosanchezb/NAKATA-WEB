@@ -1,15 +1,28 @@
-import { Link, useParams } from "react-router-dom";
-import { useOrder } from "../hooks";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useOrder, useUser } from "../hooks";
 import { Loader } from "../components/shared/Loader";
 import { CiCircleCheck } from "react-icons/ci";
 import { formatPrice } from "../helpers";
+import { useEffect } from "react";
+import { supabase } from "../supabase/client";
 
 export const ThankyouPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useOrder(Number(id));
+  const { isLoading: isLoadingSession } = useUser();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === "SIGNED_OUT" || !session) {
+        navigate("/login");
+      }
+    });
+  }, [navigate]);
 
   if (isError) return <div>Error al procesar la orden</div>;
-  if (isLoading || !data) return <Loader />;
+  if (isLoading || !data || isLoadingSession) return <Loader />;
 
   return (
     <div className="flex flex-col h-screen">
@@ -109,7 +122,7 @@ export const ThankyouPage = () => {
 
           <div className="grid grid-cols-2 gap-5">
             <div className="flex flex-col text-sm">
-              <p className="font-semibold">Información de contacto:</p>
+              <p className="font-semibold">Email de contacto:</p>
               <p>{data.customer.email}</p>
             </div>
             <div className="flex flex-col text-sm">
@@ -118,28 +131,36 @@ export const ThankyouPage = () => {
             </div>
             <div className="flex flex-col text-sm">
               <p className="font-semibold">Dirección de entrega</p>
-              <p>{data.addres.addressLine1}</p>
-              <p>{data.addres.addressLine2 && data.addres.addressLine2}</p>
-              <p>{data.addres.country}</p>
-              <p>{data.addres.state}</p>
-              <p>{data.addres.city}</p>
-              <p>{data.addres.postalCode}</p>
+              <p>{data.address.addressLine1}</p>
+              <p>{data.address.addressLine2 && data.address.addressLine2}</p>
+              <p>{data.address.country}</p>
+              <p>{data.address.state}</p>
+              <p>{data.address.city}</p>
+              <p>{data.address.postalCode}</p>
             </div>
 
             <div className="flex flex-col text-sm">
               <p className="font-semibold">Método de envío</p>
-              <p>Standard</p>
+              <p>A domicilio</p>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col justify-between items-center w-full mb-5 gap-3 sm:flex-row md:w-[600px] md:gap-0">
           <p className="text-sm">
-            Ante cualquier inconveniente no dudes en contactarnos
+            Ante cualquier inconveniente no dudes en{" "}
+            <a
+              href="https://www.instagram.com/diesanchezb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 underline"
+            >
+              contactarnos
+            </a>
           </p>
           <Link
             to="/productos"
-            className="py-4 text-sm rounded-md px-5 tracking-tight font-semibold"
+            className="py-2.5 text-sm rounded-md px-3 tracking-tight font-semibold border border-pink-300 bg-pink-300 hover:bg-green-400 text-black"
           >
             Seguir comprando
           </Link>

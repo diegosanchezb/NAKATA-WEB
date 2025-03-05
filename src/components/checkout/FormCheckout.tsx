@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { AddressFormValues, addressSchema } from "../../lib/validators";
+import { addressFormValues, addressSchema } from "../../lib/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InputAddress } from "./InputAddress";
+import { Inputaddress } from "./Inputaddress";
 import { ItemsCheckout } from "./ItemsCheckout";
 import { useCreatedOrder } from "../../hooks";
 import { useCartStore } from "../../store/cart.store";
@@ -12,7 +12,7 @@ export const FormCheckout = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<AddressFormValues>({
+  } = useForm<addressFormValues>({
     resolver: zodResolver(addressSchema),
   });
 
@@ -54,31 +54,31 @@ export const FormCheckout = () => {
         <div className="flex flex-col gap-3">
           <h3 className="text-lg font-semibold tracking-normal">Entrega</h3>
 
-          <InputAddress
+          <Inputaddress
             register={register}
             errors={errors}
             name="addressLine1"
             placeholder="Dirección principal"
           />
-          <InputAddress
+          <Inputaddress
             register={register}
             errors={errors}
             name="addressLine2"
             placeholder="Dirección adicional (opcional)"
           />
-          <InputAddress
+          <Inputaddress
             register={register}
             errors={errors}
             name="state"
             placeholder="Provincia"
           />
-          <InputAddress
+          <Inputaddress
             register={register}
             errors={errors}
             name="city"
             placeholder="Ciudad/Localidad"
           />
-          <InputAddress
+          <Inputaddress
             register={register}
             errors={errors}
             name="postalCode"

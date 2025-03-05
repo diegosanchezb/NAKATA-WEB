@@ -55,6 +55,10 @@ export const router = createBrowserRouter([
             path: "pedidos",
             element: <OrdersUserPage />,
           },
+          {
+						path: 'pedidos/:id',
+						element: <OrderUserPage />,
+					},
         ],
       },
     ],
@@ -66,9 +70,5 @@ export const router = createBrowserRouter([
   {
     path: "/checkout/:id/thank-you",
     element: <ThankyouPage />,
-  },
-  {
-    path: "pedidos/:id",
-    element: <OrderUserPage />,
   },
 ]);

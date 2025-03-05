@@ -9,7 +9,7 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { Logo } from "./Logo";
 import { useGlobalStore } from "../../store/global.store";
 import { useCartStore } from "../../store/cart.store";
-import { useUser } from "../../hooks";
+import { useCustomer, useUser } from "../../hooks";
 import { LuLoader } from "react-icons/lu";
 
 export const Navbar = () => {
@@ -20,6 +20,7 @@ export const Navbar = () => {
   );
   const { session, isLoading } = useUser();
   const userId = session?.user.id;
+  const {data: customer} = useCustomer(userId!)
 
   return (
     <header className=" text-pink-300 py-5 flex items-center border-b border-pink-300 justify-between lg:px-12">
@@ -56,7 +57,7 @@ export const Navbar = () => {
               to="/account"
               className="border-2 border-pink-300 w-10 h-9 rounded-full grid place-items-center text-lg font-bold hover:text-green-400 hover:border-green-400"
             >
-              NC
+              {customer && customer.full_name[0]}
             </Link>
           </div>
         ) : (

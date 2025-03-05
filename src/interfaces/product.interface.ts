@@ -24,7 +24,7 @@ export interface Product {
   description: Json;
   images: string[];
   created_at: string;
-  variants: { VariantProduct }[];
+  variants: VariantProduct [];
 }
 
 export interface PreparedProducts {
@@ -41,5 +41,5 @@ export interface PreparedProducts {
     name: string;
     color: string;
   }[];
-  variants: { VariantProduct }[];
+  variants: VariantProduct [];
 }
