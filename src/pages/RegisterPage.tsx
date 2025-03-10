@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRegister, useUser } from "../hooks";
 import { LuLoader } from "react-icons/lu";
 import { Loader } from "../components/shared/Loader";
-import { UserRegisterFormValues, userRegisterScheme } from "../lib/validators";
+import { UserRegisterFormValues, userRegisterSchema } from "../lib/validators";
 
 export const RegisterPage = () => {
   const {
@@ -18,7 +18,7 @@ export const RegisterPage = () => {
       password: "",
       phone: "",
     },
-    resolver: zodResolver(userRegisterScheme),
+    resolver: zodResolver(userRegisterSchema),
   });
 
   const { mutate, isPending } = useRegister();
