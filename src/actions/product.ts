@@ -143,7 +143,7 @@ export const createProduct = async (productInput: ProductInput) => {
 
         if (error) throw new Error(error.message);
         const imageUrl = `${
-          supabase.storage.from("product-image").getPublicUrl(data.path).data
+          supabase.storage.from("product-images").getPublicUrl(data.path).data
             .publicUrl
         }`;
         return imageUrl;
@@ -263,8 +263,8 @@ export const updateProduct = async (
       .from("product-images")
       .remove(filesToDelete);
     if (deleteImagesError) {
-      throw new Error(deleteImagesError.message);
       console.log(deleteImagesError.message);
+      throw new Error(deleteImagesError.message);
     } else {
       console.log(`Imágenes eliminadas: ${filesToDelete.join(", ")}`);
     }
@@ -355,7 +355,7 @@ export const updateProduct = async (
     .not(
       "id",
       "in",
-      `(${currentVariantIds ? currentVariantIds.join(", ") : 0})`
+      `(${currentVariantIds ? currentVariantIds.join(",") : 0})`
     );
   if (deleteVariantsError) throw new Error(deleteVariantsError.message);
 
