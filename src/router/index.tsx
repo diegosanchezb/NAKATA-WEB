@@ -3,6 +3,7 @@ import { RootLayout } from "../layouts/RootLayout";
 import {
   AboutPage,
   DashboardNewProductPage,
+  DashboardProductSlugPage,
   DashboardProductsPage,
   HomePage,
   LoginPage,
@@ -88,9 +89,13 @@ export const router = createBrowserRouter([
         element: <DashboardProductsPage />,
       },
       {
-        path: 'productos/new',
-        element: <DashboardNewProductPage />
-      }
+        path: "productos/new",
+        element: <DashboardNewProductPage />,
+      },
+      {
+        path: "productos/editar/:slug",
+        element: <DashboardProductSlugPage />,
+      },
     ],
   },
 ]);

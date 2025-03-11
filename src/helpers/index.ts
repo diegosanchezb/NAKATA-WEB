@@ -65,7 +65,6 @@ export const formatDate = (date: string): string => {
   });
 };
 
-
 //FUNCIÓN PARA OBTENER ESTADO DEL PEDIDO EN ESPAÑOL
 export const getStatus = (status: string): string => {
   switch (status) {
@@ -84,8 +83,18 @@ export const getStatus = (status: string): string => {
 
 //FUNCIÓN PARA GENERAR SLUG DE PRODUCTOS
 export const generateSlug = (name: string): string => {
-	return name
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/(^-|-$)/g, '');
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+};
+
+export const extractFilePath = (url: string) => {
+  const parts = url.split("/storage/v1/ object/public/product-images/");
+  
+  if (parts.length !== 2) {
+    throw new Error("URL de imágen no válida: ${url}");
+  }
+
+  return parts[1];
 };
