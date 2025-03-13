@@ -16,3 +16,6 @@ export * from "./auth/useCustomer";
 export * from "./orders/useCreatedOrder";
 export * from "./orders/useOrder";
 export * from "./orders/useOrders";
+export * from "./orders/useAllOrders";
+export * from "./orders/useChangeStatusOrder";
+export * from "./orders/useOrderAdmin";

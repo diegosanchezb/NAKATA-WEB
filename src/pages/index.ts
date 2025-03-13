@@ -13,3 +13,5 @@ export * from "./OrderUserPage";
 export * from "./dashboard/DashboardProductsPage";
 export * from "./dashboard/DashboardNewProductPage";
 export * from "./dashboard/DashboardProductSlugPage";
+export * from "./dashboard/DashboardOrdersPage";
+export * from "./dashboard/DashboardOrderPage";

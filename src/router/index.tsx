@@ -3,6 +3,7 @@ import { RootLayout } from "../layouts/RootLayout";
 import {
   AboutPage,
   DashboardNewProductPage,
+  DashboardOrdersPage,
   DashboardProductSlugPage,
   DashboardProductsPage,
   HomePage,
@@ -17,6 +18,7 @@ import {
 import { ClientLayout } from "../layouts/ClientLayout";
 import { CheckoutPage } from "../pages/CheckoutPage";
 import { DashboardLayout } from "../layouts/DashboardLayout";
+import { DashboardOrderPage } from "../pages/dashboard/DashboardOrderPage";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +98,14 @@ export const router = createBrowserRouter([
         path: "productos/editar/:slug",
         element: <DashboardProductSlugPage />,
       },
+      {
+        path: 'ordenes',
+        element: <DashboardOrdersPage />,
+      },
+      {
+        path: 'ordenes/:id',
+        element: <DashboardOrderPage />
+      }
     ],
   },
 ]);
