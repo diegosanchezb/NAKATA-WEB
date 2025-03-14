@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, replace, useNavigate } from "react-router-dom";
 import { signOut } from "../actions";
 import { useUser } from "../hooks";
 import { useEffect } from "react";
@@ -12,12 +12,12 @@ export const ClientLayout = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === "SIGNED_OUT" || !session) {
-        navigate("/login");
+        navigate("/login", { replace: true });
       }
     });
   }, [navigate]);
 
-  if(isLoadingSession) return <Loader />
+  if (isLoadingSession) return <Loader />;
 
   const handleLogout = async () => {
     await signOut();
