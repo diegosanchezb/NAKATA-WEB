@@ -10,7 +10,7 @@ export const DashboardLayout = () => {
   const navigate = useNavigate();
   const { isLoading, session } = useUser();
   const [roleLoading, setRoleLoading] = useState(true);
-  
+
   useEffect(() => {
     const checkRole = async () => {
       setRoleLoading(true);

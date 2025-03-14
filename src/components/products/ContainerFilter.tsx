@@ -2,12 +2,12 @@ import { Separator } from "../shared/Separator";
 
 const availableBrands = [
   "Apple",
-  "Remeras",
-  "Jeans",
-  "Shorts",
+  "Samsung",
+  "Realme",
+  "Huawei",
   "Gay el que lee",
-  "Joggins",
-  "Gorras",
+  "Honor",
+  "Motorola",
 ];
 
 interface Props {
@@ -28,7 +28,7 @@ export const ContainerFilter = ({
   };
 
   return (
-    <div className="p-5 border border-pink-300 rounded-lg h-fit col-span-2 lg:col-span-1">
+    <div className="p-4 border border-pink-300 rounded-lg h-fit col-span-2 lg:col-span-1 mr-15">
       <h3 className="font-semibold text-xl mb-4 text-pink-300">Filtros</h3>
 
       <Separator />

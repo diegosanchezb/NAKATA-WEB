@@ -1,12 +1,16 @@
 import { NavLink, Outlet, replace, useNavigate } from "react-router-dom";
 import { signOut } from "../actions";
-import { useUser } from "../hooks";
+import { useRoleUser, useUser } from "../hooks";
 import { useEffect } from "react";
 import { supabase } from "../supabase/client";
 import { Loader } from "../components/shared/Loader";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 export const ClientLayout = () => {
   const { session, isLoading: isLoadingSession } = useUser();
+  const { data: role, isLoading: isLoadingRole } = useRoleUser(
+    session?.user.id as string
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +21,7 @@ export const ClientLayout = () => {
     });
   }, [navigate]);
 
-  if (isLoadingSession) return <Loader />;
+  if (isLoadingSession || isLoadingRole) return <Loader />;
 
   const handleLogout = async () => {
     await signOut();
@@ -28,12 +32,20 @@ export const ClientLayout = () => {
       <nav className="flex justify-center gap-10 text-sm font-medium">
         <NavLink
           to="/account/pedidos"
-          className={({ isActive }) =>
-            `${isActive ? "underline hover:text-green-400" : "hover:underline"}`
-          }
+          className="hover:underline hover:text-green-400"
         >
           Pedidos
         </NavLink>
+
+        {role === "admin" && (
+          <NavLink
+            to="/dashboard/productos"
+            className="flex items-center gap-1 hover:underline hover:text-green-400"
+          >
+            Panel de administrador
+            <HiOutlineExternalLink size={16} className="inline-block" />
+          </NavLink>
+        )}
 
         <button
           className="hover:underline hover:text-green-400 cursor-pointer"

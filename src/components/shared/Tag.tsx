@@ -5,10 +5,10 @@ interface Props {
 
 const getTagColor = (content: TagType) => {
   const lowerContent = content.toLocaleLowerCase();
-  if (lowerContent === "disponible") return "bg-pink-300";
-  if (lowerContent === "agotado") return "bg-pink-300";
+  if (lowerContent === "disponible") return "bg-pink-300 rounded-md border-1";
+  if (lowerContent === "agotado") return "bg-pink-300 rounded-md border-1";
 
-  return "bg-pink-300";
+  return "bg-pink-300 rounded-md border-1";
 };
 
 export const Tag = ({ contentTag }: Props) => {

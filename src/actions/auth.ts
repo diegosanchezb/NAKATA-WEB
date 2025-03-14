@@ -99,12 +99,10 @@ export const getUserData = async (userId: string) => {
     .select("*")
     .eq("user_id", userId)
     .single();
-
   if (error) {
     console.log(error);
     throw new Error("Error al obtener la data");
   }
-
   return data;
 };
 
@@ -114,11 +112,9 @@ export const getUserRole = async (userId: string) => {
     .select("role")
     .eq("user_id", userId)
     .single();
-
   if (error) {
     console.log(error);
     throw new Error("Error al obtener el rol del usuario");
   }
-
   return data.role;
 };
