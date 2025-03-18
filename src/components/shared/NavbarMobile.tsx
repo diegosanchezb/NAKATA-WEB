@@ -23,8 +23,8 @@ export const NavbarMobile = () => {
           className="text-4xl font-bold tracking-tighter transition-all"
           onClick={() => setActiveNavMobile(false)}
         >
-          <p>Nakata</p>
-          <span className="text-green-400">Clothes</span>
+          <p>Lorem</p>
+          <span className="text-green-400">Ipsum</span>
         </Link>
         <nav className="flex flex-col items-center gap-5">
           {navbarLinks.map((item) => (

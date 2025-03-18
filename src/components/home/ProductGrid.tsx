@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductGrid = ({ title, products }: Props) => {
   return (
-    <div className="my-20  p-7 text-pink-300 rounded-lg border border-pink-300">
+    <div className="my-20  p-7 text-pink-300">
       <h2 className="text-2xl font-semibold text-center mb-8 md:text-3xl lg:text-3xl text-pink-300">
         {title}
       </h2>

@@ -33,7 +33,7 @@ export const CheckoutPage = () => {
           to="/"
           className="text-4xl font-bold self-center tracking-tighter transition-all md:text-5xl md:self-start"
         >
-          Nakata <span className="text-green-400">Clothes</span>
+          Lorem <span className="text-green-400">Ipsum</span>
         </Link>
       </header>
 

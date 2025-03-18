@@ -5,7 +5,7 @@ import { MdLocalShipping } from "react-icons/md";
 
 export const FeatureGrid = () => {
   return (
-    <div className="flex justify-center rounded-lg border border-pink-300 text-pink-300 p-5">
+    <div className="relative flex justify-center text-pink-300 p-5 mb-41">
       <div className="grid mt-2 mb-2 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 max-w-screen-lg">
         <div className="flex items-center gap-6">
           <MdLocalShipping
@@ -13,8 +13,8 @@ export const FeatureGrid = () => {
             className="text-pink-300 hover:text-green-400"
           />
           <div className="space-y-1">
-            <p className="font-semibold">Envío gratis</p>
-            <p className="text-sm">En compras mayores a $50.000</p>
+            <p className="font-semibold">Lorem, ipsum.</p>
+            <p className="text-sm">Lorem ipsum dolor sit amet.</p>
           </div>
         </div>
 
@@ -24,17 +24,17 @@ export const FeatureGrid = () => {
             className="text-pink-300 hover:text-green-400"
           />
           <div className="space-y-1">
-            <p className="font-semibold">NO hay devoluciones</p>
-            <p className="text-sm">Procure comprobar las medidas.</p>
+            <p className="font-semibold">Lorem, ipsum dolor.</p>
+            <p className="text-sm">Lorem ipsum dolor sit amet.</p>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
-          <FaHammer size={65} className="text-pink-300 hover:text-green-400" />
+          <FaHammer size={50} className="text-pink-300 hover:text-green-400" />
           <div className="space-y-1">
-            <p className="font-semibold">Soporte 24/7</p>
+            <p className="font-semibold">Lorem, ipsum.</p>
             <p className="text-sm">
-              Contamos con atención al cliente las 24HS.
+              Lorem ipsum dolor sit amet.
             </p>
           </div>
         </div>
@@ -42,8 +42,8 @@ export const FeatureGrid = () => {
         <div className="flex items-center gap-6">
           <BiWorld size={40} className="text-pink-300 hover:text-green-400" />
           <div className="space-y-1">
-            <p className="font-semibold">Hola XD</p>
-            <p className="text-sm">En compras mayores a $50.000.</p>
+            <p className="font-semibold">Lorem, ipsum.</p>
+            <p className="text-sm">Lorem ipsum dolor sit amet.</p>
           </div>
         </div>
       </div>

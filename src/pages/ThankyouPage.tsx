@@ -31,7 +31,7 @@ export const ThankyouPage = () => {
           to="/"
           className="text-3xl font-bold self-center tracking-tighter transition-all md:text-4xl"
         >
-          <p>Nakata</p> <span className="text-green-400">Clothes</span>
+          <p>Lorem</p> <span className="text-green-400">Ipsum</span>
         </Link>
       </header>
 

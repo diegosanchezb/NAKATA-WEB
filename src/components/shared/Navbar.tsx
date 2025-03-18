@@ -23,7 +23,7 @@ export const Navbar = () => {
   const {data: customer} = useCustomer(userId!)
 
   return (
-    <header className=" text-pink-300 py-5 flex items-center border-b border-pink-300 justify-between lg:px-12">
+    <header className=" text-pink-300 py-3 flex items-center border-b border-pink-300 justify-between lg:px-10">
       <Logo />
       <nav className="space-x-20 hidden md:flex">
         {navbarLinks.map((link) => (
